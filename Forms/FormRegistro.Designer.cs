@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class Form1
+    partial class FormRegistro
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             gBoxUsuario = new GroupBox();
-            numericUpDown1 = new NumericUpDown();
-            textBox2 = new TextBox();
+            numEdad = new NumericUpDown();
+            txtDireccion = new TextBox();
             lblEdad = new Label();
             lblDireccion = new Label();
             lblNombre = new Label();
-            textBox1 = new TextBox();
+            txtNombre = new TextBox();
             gBoxPais = new GroupBox();
             lBoxPaises = new ListBox();
             gBoxGenero = new GroupBox();
@@ -47,7 +47,7 @@
             cBoxC = new CheckBox();
             btnIngresar = new Button();
             gBoxUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numEdad).BeginInit();
             gBoxPais.SuspendLayout();
             gBoxGenero.SuspendLayout();
             gBoxCursos.SuspendLayout();
@@ -55,12 +55,12 @@
             // 
             // gBoxUsuario
             // 
-            gBoxUsuario.Controls.Add(numericUpDown1);
-            gBoxUsuario.Controls.Add(textBox2);
+            gBoxUsuario.Controls.Add(numEdad);
+            gBoxUsuario.Controls.Add(txtDireccion);
             gBoxUsuario.Controls.Add(lblEdad);
             gBoxUsuario.Controls.Add(lblDireccion);
             gBoxUsuario.Controls.Add(lblNombre);
-            gBoxUsuario.Controls.Add(textBox1);
+            gBoxUsuario.Controls.Add(txtNombre);
             gBoxUsuario.Location = new Point(12, 12);
             gBoxUsuario.Name = "gBoxUsuario";
             gBoxUsuario.Size = new Size(251, 178);
@@ -68,19 +68,20 @@
             gBoxUsuario.TabStop = false;
             gBoxUsuario.Text = "Detalles de usuarios";
             // 
-            // numericUpDown1
+            // numEdad
             // 
-            numericUpDown1.Location = new Point(89, 130);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(143, 27);
-            numericUpDown1.TabIndex = 5;
+            numEdad.Location = new Point(89, 130);
+            numEdad.Maximum = new decimal(new int[] { 110, 0, 0, 0 });
+            numEdad.Name = "numEdad";
+            numEdad.Size = new Size(143, 27);
+            numEdad.TabIndex = 5;
             // 
-            // textBox2
+            // txtDireccion
             // 
-            textBox2.Location = new Point(89, 83);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(143, 27);
-            textBox2.TabIndex = 4;
+            txtDireccion.Location = new Point(89, 83);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(143, 27);
+            txtDireccion.TabIndex = 4;
             // 
             // lblEdad
             // 
@@ -109,12 +110,12 @@
             lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre";
             // 
-            // textBox1
+            // txtNombre
             // 
-            textBox1.Location = new Point(89, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(143, 27);
-            textBox1.TabIndex = 0;
+            txtNombre.Location = new Point(89, 35);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(143, 27);
+            txtNombre.TabIndex = 0;
             // 
             // gBoxPais
             // 
@@ -154,7 +155,6 @@
             rBtnNoBinario.Name = "rBtnNoBinario";
             rBtnNoBinario.Size = new Size(101, 24);
             rBtnNoBinario.TabIndex = 2;
-            rBtnNoBinario.TabStop = true;
             rBtnNoBinario.Text = "No binario";
             rBtnNoBinario.UseVisualStyleBackColor = true;
             // 
@@ -165,13 +165,13 @@
             rBtnFemenino.Name = "rBtnFemenino";
             rBtnFemenino.Size = new Size(95, 24);
             rBtnFemenino.TabIndex = 1;
-            rBtnFemenino.TabStop = true;
             rBtnFemenino.Text = "Femenino";
             rBtnFemenino.UseVisualStyleBackColor = true;
             // 
             // rBtnMasculino
             // 
             rBtnMasculino.AutoSize = true;
+            rBtnMasculino.Checked = true;
             rBtnMasculino.Location = new Point(16, 34);
             rBtnMasculino.Name = "rBtnMasculino";
             rBtnMasculino.Size = new Size(97, 24);
@@ -195,7 +195,7 @@
             // cBoxJavaScript
             // 
             cBoxJavaScript.AutoSize = true;
-            cBoxJavaScript.Location = new Point(10, 93);
+            cBoxJavaScript.Location = new Point(16, 93);
             cBoxJavaScript.Name = "cBoxJavaScript";
             cBoxJavaScript.Size = new Size(97, 24);
             cBoxJavaScript.TabIndex = 2;
@@ -205,7 +205,7 @@
             // cBoxCmas
             // 
             cBoxCmas.AutoSize = true;
-            cBoxCmas.Location = new Point(10, 63);
+            cBoxCmas.Location = new Point(16, 63);
             cBoxCmas.Name = "cBoxCmas";
             cBoxCmas.Size = new Size(60, 24);
             cBoxCmas.TabIndex = 1;
@@ -215,7 +215,7 @@
             // cBoxC
             // 
             cBoxC.AutoSize = true;
-            cBoxC.Location = new Point(10, 33);
+            cBoxC.Location = new Point(16, 33);
             cBoxC.Name = "cBoxC";
             cBoxC.Size = new Size(49, 24);
             cBoxC.TabIndex = 0;
@@ -230,23 +230,25 @@
             btnIngresar.TabIndex = 4;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
-            // Form1
+            // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(449, 350);
+            ClientSize = new Size(441, 350);
             Controls.Add(btnIngresar);
             Controls.Add(gBoxCursos);
             Controls.Add(gBoxGenero);
             Controls.Add(gBoxPais);
             Controls.Add(gBoxUsuario);
-            Name = "Form1";
+            Name = "FormRegistro";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Registro";
             gBoxUsuario.ResumeLayout(false);
             gBoxUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numEdad).EndInit();
             gBoxPais.ResumeLayout(false);
             gBoxGenero.ResumeLayout(false);
             gBoxGenero.PerformLayout();
@@ -259,9 +261,9 @@
 
         private GroupBox gBoxUsuario;
         private Label lblNombre;
-        private TextBox textBox1;
-        private NumericUpDown numericUpDown1;
-        private TextBox textBox2;
+        private TextBox txtNombre;
+        private NumericUpDown numEdad;
+        private TextBox txtDireccion;
         private Label lblEdad;
         private Label lblDireccion;
         private GroupBox gBoxPais;

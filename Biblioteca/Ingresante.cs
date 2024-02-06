@@ -16,6 +16,7 @@ namespace Biblioteca
         public string[] Cursos
         {
             get { return _cursos; }
+            set { _cursos = value; }
         }
 
         // Propiedad para acceder a _direccion
@@ -51,12 +52,16 @@ namespace Biblioteca
         // Constructor
         public Ingresante(string[] cursos, string direccion, int edad, string genero, string nombre, string pais)
         {
-            _cursos = cursos;
             _direccion = direccion;
             _edad = edad;
             _genero = genero;
             _nombre = nombre;
             _pais = pais;
+            _cursos = new string[cursos.Length];
+            for (int i = 0; i < cursos.Length; i++)
+            {
+                _cursos[i] = cursos[i];
+            }
         }
 
         // Método que formatea y muestra los valores de los atributos
@@ -68,7 +73,14 @@ namespace Biblioteca
             sb.AppendLine($"Edad: {Edad}");
             sb.AppendLine($"Género: {Genero}");
             sb.AppendLine($"País: {Pais}");
-            sb.AppendLine($"Curso/s: {Cursos}");
+            sb.AppendLine($"Curso/s:");
+            foreach (string curso in Cursos)
+            {
+                if (!string.IsNullOrEmpty(curso))
+                {
+                    sb.AppendLine($"- {curso}");
+                }
+            }
             return sb.ToString();
         }
     }
